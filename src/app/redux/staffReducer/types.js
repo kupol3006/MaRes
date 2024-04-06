@@ -1,0 +1,17 @@
+export const FETCH_REQUEST = 'FETCH_REQUEST';
+
+export const FETCH_SUCCESS = 'FETCH_SUCCESS';
+
+export const FETCH_ERROR = 'FETCH_ERROR';
+
+export const CHECK_OUT_REQUEST = 'CHECK_OUT_REQUEST';
+
+export const CHECK_OUT_SUCCESS = 'CHECK_OUT_SUCCESS';
+
+export const CHECK_OUT_ERROR = 'CHECK_OUT_ERROR';
+
+export const CHECK_IN_REQUEST = 'CHECK_IN_REQUEST';
+
+export const CHECK_IN_SUCCESS = 'CHECK_IN_SUCCESS';
+
+export const CHECK_IN_ERROR = 'CHECK_IN_ERROR';
