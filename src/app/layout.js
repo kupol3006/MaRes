@@ -7,7 +7,7 @@ import StyledComponentsRegistry from './lib/AntdRegistry';
 import { AuthProvider } from "./Context/AuthContext";
 import { ConfigProvider } from 'antd';
 import { Provider } from 'react-redux';
-import store from './redux/store.js';
+import { store } from './redux/store.js';
 
 const config = {
   "token": {

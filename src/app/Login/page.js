@@ -6,12 +6,11 @@ import { useEffect, useState } from 'react'
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useAuth } from '../Context/AuthContext';
 import { parseCookies, setCookie } from 'nookies';
-import { requestLogin } from '../redux/authReducer/action';
+import { loginAsync } from '../redux/slices/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function Page() {
     const dispatch = useDispatch();
-    // const username = useSelector(state => state.auth.username);
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -38,7 +37,7 @@ export default function Page() {
 
     const handleSubmit = () => {
         if (username === '65613728' && password === '000000') {
-            dispatch(requestLogin(username, password));
+            dispatch(loginAsync({ code: username, pin: password }));
             router.push('/');
             // console.log(username, password);
         } else {

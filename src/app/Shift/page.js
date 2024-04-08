@@ -7,7 +7,7 @@ import { DataContext } from '../Context/PopupContext.js';
 import { useRouter } from 'next/navigation';
 import { parseCookies, setCookie } from 'nookies';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchApiStaff } from '../redux/staffReducer/action.js';
+import { getStaff } from '../redux/slices/staffSlice.js';
 
 export default function shift() {
     const router = useRouter();
@@ -24,7 +24,6 @@ export default function shift() {
     // const [data2, setData2] = useState([]);
     const [button, setButton] = useState('');
     const [title, setTitle] = useState('');
-    const [staffId, setStaffId] = useState([]);
     const [index, setIndex] = useState(null);
 
     useEffect(() => {
@@ -50,7 +49,7 @@ export default function shift() {
         //     .catch(error => {
         //         console.log(error);
         //     });
-        dispatch(fetchApiStaff());
+        dispatch(getStaff());
     }, []);
 
     // const Checkout = async (index) => {

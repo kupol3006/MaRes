@@ -4,22 +4,10 @@ import React, { useState, useContext, useCallback, useEffect, memo } from 'react
 import { DataContext } from '../Context/PopupContext.js';
 import {
     Button,
-    Cascader,
-    Checkbox,
-    ColorPicker,
-    DatePicker,
-    Form,
-    Input,
-    InputNumber,
-    Radio,
-    Select,
-    Slider,
-    Switch,
-    TreeSelect,
-    Upload,
+    Form
 } from 'antd';
 // import axios from 'axios';
-import { checkInStaff, checkOutStaff } from '../redux/staffReducer/action.js';
+import { checkStatus } from '../redux/slices/checkSlice.js';
 import { useDispatch } from 'react-redux';
 
 
@@ -27,9 +15,17 @@ import { useDispatch } from 'react-redux';
 // const { loading, error, login, token, logout } = useAuth();
 
 
+
 const FormDisabledDemo = ({ button, title, index }) => {
     const dispatch = useDispatch();
-
+    const [type, setType] = useState('');
+    useEffect(() => {
+        if (button === 'Check in') {
+            setType('in');
+        } else {
+            setType('out');
+        }
+    }, [button])
     const { updateData } = useContext(DataContext);
 
     const divStyle = {
@@ -46,14 +42,11 @@ const FormDisabledDemo = ({ button, title, index }) => {
     const cancle = () => {
         updateData(false);
     };
-    const CheckIn = () => {
-        console.log(button);
-        dispatch(checkInStaff(index));
-    };
-    const CheckOut = () => {
-        console.log(button);
-        dispatch(checkOutStaff(index));
-    };
+    const check = () => {
+
+        console.log(type);
+        dispatch(checkStatus({ index: index, type: type }));
+    }
     return (
         <div className='pop-up'>
             <button onClick={cancle}>
@@ -72,7 +65,7 @@ const FormDisabledDemo = ({ button, title, index }) => {
                 style={{
                     maxWidth: 450,
                 }}
-                onFinish={button === 'Check in' ? CheckIn : CheckOut}
+                onFinish={check}
                 autoComplete="off"
             >
                 <h2>{title}</h2>

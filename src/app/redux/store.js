@@ -1,13 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { applyMiddleware } from '@reduxjs/toolkit';
-import rootReducer from './rootReducer';
-import { composeWithDevTools } from '@redux-devtools/extension';
-import { thunk } from 'redux-thunk';
+import { configureStore } from '@reduxjs/toolkit'
+import staffReducer from './slices/staffSlice.js'
+import checkReducer from './slices/checkSlice.js'
 
-const composedEnhancer = composeWithDevTools(applyMiddleware(thunk));
-
-const store = configureStore({
-    reducer: rootReducer,
-    compose: composedEnhancer,
-});
-export default store;
+export const store = configureStore({
+    reducer: {
+        staff: staffReducer,
+        check: checkReducer,
+    },
+})
